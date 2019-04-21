@@ -193,6 +193,9 @@
         },
         success: obj => {
           console.log(obj)
+          if(obj.msg=='未登录'){
+            location.href='login.html'
+          }
           let html = template('tpl', obj);
           $('tbody').html(html)
           $('.page-num a').text(pagenum + '/' + obj.totalPage);

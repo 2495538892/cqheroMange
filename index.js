@@ -14,6 +14,36 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(express.static('views'))
 
+//作用: 是为了能让每次请求验证码生成的具体验证存储在session里面所导入的session;
+//  登录的时候需要判断验证码是否正确,所以用过cook-seesion模块在储存验证,然后在跟用户传过来的验证码进行比较;
+app.use(cookieSession({
+    name: 'session',
+    keys: ['key1', 'key2'],
+    // Cookie Options
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}))
+
+
+// 路由十:判断是否登录;
+app.use((req,res,next)=>{
+
+    if(req.url.indexOf('/hero')===0){
+
+        if(req.session.userName){
+            next()
+        }else{
+            res.send({
+                msg:'未登录',
+                code:400
+            })
+        }
+    }else{
+        next()
+    }
+})
+
+
+
 // 路由一:查询英雄;
 app.get('/herolist', (req, res) => {
 
@@ -72,7 +102,7 @@ app.get('/hreoDetail', (req, res) => {
 })
 
 // 路由三:删除英雄;
-app.get('/deleteHero', (req, res) => {
+app.get('/heroDelete', (req, res) => {
 
     // 获取删除的id;
     const id = req.query.id;
@@ -88,7 +118,7 @@ app.get('/deleteHero', (req, res) => {
 // 路由四:新增英雄;
 // 图片上传保存在哪里;
 const upload = multer({ dest: 'views/imgs/' });
-app.post('/addHero', upload.single('heroIcon'), (req, res) => {
+app.post('/heroAdd', upload.single('heroIcon'), (req, res) => {
 
     const heroName = req.body.heroName;
     const skillName = req.body.skillName;
@@ -101,7 +131,7 @@ app.post('/addHero', upload.single('heroIcon'), (req, res) => {
 })
 
 // 路由五:修改英雄
-app.post('/updateHero', upload.single('heroIcon'), (req, res) => {
+app.post('/heroUpate', upload.single('heroIcon'), (req, res) => {
     const heroName = req.body.heroName;
     const heroskill = req.body.heroskill;
     const id = req.body.id;
@@ -136,8 +166,8 @@ app.post('/register', (req, res) => {
         if (result.length === 0) {
             dbHelper.insertOne('uselist', data, result => {
                 res.send({
-                    msg:'success',
-                    code:200
+                    msg: 'success',
+                    code: 200
                 })
             })
         } else {
@@ -147,17 +177,6 @@ app.post('/register', (req, res) => {
         }
     })
 })
-
-//-----------------------------------------------------------------------------------------------------
-
-//作用: 是为了能让每次请求验证码生成的具体验证存储在session里面所导入的session;
-//  登录的时候需要判断验证码是否正确,所以用过cook-seesion模块在储存验证,然后在跟用户传过来的验证码进行比较;
-app.use(cookieSession({
-    name: 'session',
-    keys: ['key1', 'key2'],
-    // Cookie Options
-    maxAge: 24 * 60 * 60 * 1000 // 24 hours
-}))
 
 //  路由七:验证码
 app.get('/captcha', function (req, res) {
@@ -181,10 +200,12 @@ app.post('/login', (req, res) => {
         dbHelper.find('uselist', { userName, userPassword }, result => {
             if (result.length == 0) {
                 res.send({
-                    msg:'faile',
-                    code:400
+                    msg: 'faile',
+                    code: 400
                 })
             } else {
+                // 如果数据库有这个信息证明是正确的密码和正确的用户名,此时就把用户名存进session里面;方便为判断登录路由做铺垫;
+                req.session.userName=userName;
                 res.send({
                     msg: 'success',
                     userName,
@@ -204,11 +225,11 @@ app.post('/login', (req, res) => {
 
 
 // 路由九:登出
-app.get('/loginout',(req,res)=>{
+app.get('/loginout', (req, res) => {
     req.session = null;
     res.send({
-        msg:'success',
-        code:200
+        msg: 'success',
+        code: 200
     })
 })
 
