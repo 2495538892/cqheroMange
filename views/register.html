@@ -85,3 +85,29 @@
 <script src="./lib/bootstrap/js/jquery-1.12.4.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+
+<script src="./lib/md5/md5.min.js"></script>
+
+<script>
+$('.login').click(function(){
+  const userName=$('#userName').val();
+  const userPassword=$('#userPass').val();
+  const md5pass=md5(userPassword,'key')
+  console.log(md5)
+  const tx=/^[a-z]+$/i;
+  // 判断正则;
+  if(tx.test(userName)){
+  
+  }else{
+    console.log('请输入正确的名称')
+  }
+ 
+
+ 
+
+})
+
+
+
+
+</script>

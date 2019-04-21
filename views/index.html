@@ -67,7 +67,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <p class="navbar-text navbar-right " style="font-weight: 700">
-                欢迎 【jack】登录
+                欢迎 【<span class="userName">jack</span> 】登录
                 <a href="#" class="logout">退出</a>
               </p>
             </div>
@@ -250,7 +250,15 @@
       })
     }
 
-
+    // 页面一加载就选择登录者的名字;
+    userName()
+    function userName(){
+      const Name=location.search;
+      console.log(Name)
+      const newName=Name.split('=')[1];
+      const Uname=decodeURI(newName);
+     $('.userName').text(Uname);
+    }
   })
 
 </script>

@@ -115,9 +115,10 @@
                     <input
                       type="file"
                       class="form-control"
-                      id="icon"
+                      id="heroIcon"
                       name="heroIcon"
                     />
+                    <img src="" alt="" class="show">
                   </div>
                 </div>
                 <div class="form-group">
@@ -156,5 +157,20 @@ $('.btn-default').click(function(){
           }
         })
 })
+
+
+  // 本地图片预览;
+  picshow()
+  function picshow() {
+    // 给上传文件注册值改变事件;
+    $('#heroIcon').change(function (e) {
+      // 找到修改后的值(在event事件去找)  最后找到修改后的值target.files[0]里面;
+      // 然后就把找到的值设置成临时路径;
+      const url = URL.createObjectURL(e.target.files[0])
+
+      $('.show').attr('src', url)
+    })
+  }
+
 
 </script>

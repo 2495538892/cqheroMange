@@ -20,7 +20,8 @@
     .login-panel {
       margin-top: 200px;
     }
-    .vCode{
+
+    .vCode {
       height: 36px;
       cursor: pointer;
     }
@@ -36,17 +37,19 @@
             <h3 class="panel-title">登录英雄管理系统</h3>
           </div>
           <div class="panel-body">
-            <form action="#" method="post"  class="form-horizontal">
+            <form action="#" method="post" class="form-horizontal">
               <div class="form-group">
                 <label for="userName" class="col-sm-2 control-label">用户名</label>
                 <div class="col-sm-10">
-                  <input type="text" name="userName" value="赵*天" class="form-control" id="userName" placeholder="请输入用户名">
+                  <input type="text" name="userName" value="赵*天" class="form-control" id="userName"
+                    placeholder="请输入用户名">
                 </div>
               </div>
               <div class="form-group">
                 <label for="userPass" class="col-sm-2 control-label">密码</label>
                 <div class="col-sm-10">
-                  <input type="password" name="userPass" value="1234" class="form-control" id="userPass" placeholder="请输入密码">
+                  <input type="password" name="userPassword" value="1234" class="form-control" id="userPass"
+                    placeholder="请输入密码">
                 </div>
               </div>
               <div class="form-group">
@@ -54,13 +57,13 @@
                 <div class="col-sm-6">
                   <input type="text" name="vCode" class="form-control" id="vCode" placeholder="请输入验证码">
                 </div>
-                <div class="col-sm-4">
-                  <img class='vCode' src="./lib/img/code.png" alt="">
+                <div class="col-sm-4 yz">
+                  <img class='vCode' src="./captcha" alt="">
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-success login">登陆</button>
+                  <button type="button" class="btn btn-success login">登陆</button>
                   <a href="./register.html" class="btn btn-danger">注册</a>
                 </div>
               </div>
@@ -78,3 +81,44 @@
 <script src="./lib/bootstrap/js/jquery-1.12.4.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+
+<script>
+  $('.vCode').click(function () {
+    // 点击验证码刷新验证码;
+    // 如果直接在访问/captcha,浏览器会认为是同一个,所以会在缓存中查询,所以我们利用  "时间戳"或者"随机数'让浏览器认为url地址是新的;
+    $(this).attr('src', `/captcha?${Date.now()}`)
+  })
+
+
+  $('.login').click(function () {
+    // const data = new FormData($('form')[0])
+    const userName = $('#userName').val();
+    const userPassword = $('#userPass').val();
+    const vCode = $('#vCode').val()
+    console.log(userName)
+    console.log(userPassword)
+    console.log(vCode)
+    $.ajax({
+      url: '/login',
+      type: 'post',
+      data: {
+        userName,
+        userPassword,
+        vCode
+      },
+      success: function (obj) {
+        console.log(obj)
+        if (obj.msg == 'faile') {
+          alert('账户名或密码错误')
+        } else if (obj.msg == '验证码不正确') {
+          alert('验证码错误')
+        } else {
+          alert('登录成功');
+          location.href='index.html?userName='+obj.userName;
+        }
+      }
+    })
+  })
+
+
+</script>
