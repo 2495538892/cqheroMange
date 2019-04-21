@@ -135,7 +135,10 @@ app.post('/register', (req, res) => {
     dbHelper.find('uselist', { userName }, result => {
         if (result.length === 0) {
             dbHelper.insertOne('uselist', data, result => {
-                res.send('欢迎加入')
+                res.send({
+                    msg:'success',
+                    code:200
+                })
             })
         } else {
             res.send({

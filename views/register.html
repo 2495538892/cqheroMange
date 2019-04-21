@@ -91,15 +91,33 @@
 <script>
 $('.login').click(function(){
   const userName=$('#userName').val();
-  const userPassword=$('#userPass').val();
-  const md5pass=md5(userPassword,'key')
-  console.log(md5)
+  const md5pass=md5($('#userPass').val(),'key');
+  console.log(md5pass)
   const tx=/^[a-z]+$/i;
   // 判断正则;
   if(tx.test(userName)){
-  
+
+    $.ajax({
+      url:'/register',
+      type:'post',
+      data:{
+        userName:userName,
+        userPassword:md5pass
+      },
+      success:obj=>{
+        console.log(obj)
+        if(obj.msg=='success'){
+          alert('注册成功');
+          location.href='login.html'
+        }else{
+          alert('因不可抗拒因素,注册失败')
+        }
+      }
+    })
+
+
   }else{
-    console.log('请输入正确的名称')
+    alert('名称只能英文字母组成')
   }
  
 

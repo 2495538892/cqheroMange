@@ -82,6 +82,8 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
 
+<script src="./lib/md5/md5.min.js"></script>
+
 <script>
   $('.vCode').click(function () {
     // 点击验证码刷新验证码;
@@ -93,7 +95,7 @@
   $('.login').click(function () {
     // const data = new FormData($('form')[0])
     const userName = $('#userName').val();
-    const userPassword = $('#userPass').val();
+    const userPassword=md5($('#userPass').val(),'key');
     const vCode = $('#vCode').val()
     console.log(userName)
     console.log(userPassword)
