@@ -1,168 +1,256 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bootstrap 101 Template</title>
 
-    <!-- Bootstrap -->
-    <link href="./lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bootstrap 101 Template</title>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+  <!-- Bootstrap -->
+  <link href="./lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
       <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style>
-      .logout {
-        font-weight: 900;
-        font-size: 20px;
-        color: #ff0000;
-        text-decoration: none;
-      }
+  <style>
+    .logout {
+      font-weight: 900;
+      font-size: 20px;
+      color: #ff0000;
+      text-decoration: none;
+    }
 
-      .logout:hover {
-        text-decoration: none;
-        color: yellowgreen;
-      }
-      #my-table th {
-        text-align: center;
-      }
-      #my-table td {
-        text-align: center;
-        line-height: 50px;
-        padding: 0;
-      }
-      td img {
-        width: 50px;
-        height: 50px;
-      }
-    </style>
-  </head>
+    .logout:hover {
+      text-decoration: none;
+      color: yellowgreen;
+    }
 
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <nav class="navbar navbar-default">
-            <div class="container-fluid">
-              <!-- Brand and toggle get grouped for better mobile display -->
-              <div class="navbar-header">
-                <button
-                  type="button"
-                  class="navbar-toggle collapsed"
-                  data-toggle="collapse"
-                  data-target="#bs-example-navbar-collapse-1"
-                  aria-expanded="false"
-                >
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">欢迎进入后台管理</a>
-              </div>
+    #my-table th {
+      text-align: center;
+    }
 
-              <!-- Collect the nav links, forms, and other content for toggling -->
-              <div
-                class="collapse navbar-collapse"
-                id="bs-example-navbar-collapse-1"
-              >
-                <p class="navbar-text navbar-right " style="font-weight: 700">
-                  欢迎 【jack】登录
-                  <a href="#" class="logout">退出</a>
-                </p>
-              </div>
-              <!-- /.navbar-collapse -->
+    #my-table td {
+      text-align: center;
+      line-height: 50px;
+      padding: 0;
+    }
+
+    td img {
+      width: 50px;
+      height: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">欢迎进入后台管理</a>
             </div>
-            <!-- /.container-fluid -->
-          </nav>
-        </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <p class="navbar-text navbar-right " style="font-weight: 700">
+                欢迎 【jack】登录
+                <a href="#" class="logout">退出</a>
+              </p>
+            </div>
+            <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container-fluid -->
+        </nav>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <ol class="breadcrumb">
-                <li>
-                  <a href="./index.html">首页</a>
-                </li>
-              </ol>
-            </div>
-            <div class="panel-heading">
-              <!-- action 不写 就是当前页面 method 不写 就是 get -->
-              <div class="row">
-                <div class="col-md-9">
-                  <form class="form-inline">
-                    <div class="form-group">
-                      <label class="sr-only" for="exampleInputAmount"
-                        >Amount (in dollars)</label
-                      >
-                      <div class="input-group">
-                        <div class="input-group-addon">英雄姓名</div>
-                        <input
-                          type="text"
-                          value=""
-                          class="form-control"
-                          name="search"
-                          placeholder="请输入查询内容"
-                        />
-                      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <ol class="breadcrumb">
+              <li>
+                <a href="./index.html">首页</a>
+              </li>
+            </ol>
+          </div>
+          <div class="panel-heading">
+            <!-- action 不写 就是当前页面 method 不写 就是 get -->
+            <div class="row">
+              <div class="col-md-9">
+                <form class="form-inline">
+                  <div class="form-group">
+                    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">英雄姓名</div>
+                      <input type="text" value="" class="form-control" name="search" placeholder="请输入查询内容" />
                     </div>
-                    <button type="submit" class="btn btn-success">查找</button>
-                    <a href="#" class="btn btn-warning">新增</a>
-                  </form>
-                </div>
-                <div class="col-md-3">
-                  <ul class="pagination  pull-right" style="margin:0">
-                    <li>
-                      <a href="#" aria-label="Previous">
-                        <span aria-hidden="true">«</span>
-                      </a>
-                    </li>
-                    <li class="page-num"><a href="#">1/1</a></li>
-                    <li>
-                      <a href="#" aria-label="Next">
-                        <span aria-hidden="true">»</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+                  </div>
+                  <button type="button" class="btn btn-success">查找</button>
+                  <a href="add.html" class="btn btn-warning">新增</a>
+                </form>
+              </div>
+              <div class="col-md-3">
+                <ul class="pagination  pull-right" style="margin:0">
+                  <li>
+                    <a href="#" aria-label="Previous">
+                      <span aria-hidden="true">«</span>
+                    </a>
+                  </li>
+                  <li class="page-num"><a href="#">1/1</a></li>
+                  <li>
+                    <a href="#" aria-label="Next">
+                      <span aria-hidden="true">»</span>
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
-            <div class="panel-body">
-              <table id="my-table" class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>姓名</th>
-                    <th>技能</th>
-                    <th>头像</th>
-                    <th>操作</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>盖伦</td>
-                    <td>躲草丛</td>
-                    <td><img src="./lib/img/盖伦.png" alt="" /></td>
-                    <td>
-                      <button onclick="" class="btn btn-success">编辑🍞</button>
+          </div>
+          <div class="panel-body">
+            <table id="my-table" class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>姓名</th>
+                  <th>技能</th>
+                  <th>头像</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>盖伦</td>
+                  <td>躲草丛</td>
+                  <td><img src="./lib/img/盖伦.png" alt="" /></td>
+                  <td>
+                    <button onclick="" class="btn btn-success">编辑🍞</button>
 
-                      <button onclick="" class="btn btn-danger">删除👍</button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+                    <button onclick="" class="btn btn-danger">删除👍</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="./lib/bootstrap/js/jquery-1.12.4.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="./lib/js/template-web.js"></script>
+<script type="text/html" id="tpl">
+{{each list value index}}
+  <tr>
+    <td>{{value.heroName}}</td>
+    <td>{{value.skillName}}</td>
+    <td><img src="{{value.heroIcon}}" alt=""></td>
+    <td>
+      <button onclick="" class="btn btn-success change" data-id={{value._id}}>编辑🍞</button>
+
+      <button onclick="" class="btn btn-danger">删除👍</button>
+    </td>
+  </tr>
+{{/each}}
+</script>
+
+<script>
+  $(function () {
+
+    let query = $('input[name=search]').val()
+
+    const pagesize = 10;
+
+    let pagenum = 1;
+
+    let totalPage;
+    chaxun()
+    search()
+    function chaxun() {
+      $.ajax({
+        url: '/herolist',
+        data: {
+          pagesize,
+          pagenum,
+          query
+        },
+        success: obj => {
+          console.log(obj)
+          let html = template('tpl', obj);
+          $('tbody').html(html)
+          $('.page-num a').text(pagenum + '/' + obj.totalPage);
+          totalPage = obj.totalPage;
+        }
+      })
+    }
+
+    $('.pagination li:last').click(function () {
+      if (pagenum >= totalPage) {
+        return false;
+      }
+      pagenum++;
+      chaxun()
+    })
+
+    $('.pagination li:first').click(function () {
+      if (pagenum <= 1) {
+        return false;
+      }
+      pagenum--;
+      chaxun()
+    })
+
+    // 点击英雄查询;
+    function search(){
+      $('.btn-success').click(function () {
+        query = $('input[name=search]').val()
+        chaxun()
+      })
+   
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+  }
+
+
+    // 点击编辑;
+    change()
+    function change(){
+      $('tbody').on('click','.change',function(){
+          const id=$(this).data('id')
+          location.href='edit.html?id='+id
+      })
+    }
+
+
+  })
+
+</script>
