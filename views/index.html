@@ -218,15 +218,11 @@
     })
 
     // 点击英雄查询;
-    function search(){
+    function search() {
       $('.btn-success').click(function () {
         query = $('input[name=search]').val()
         chaxun()
       })
-   
-
-
-      
 
 
 
@@ -238,27 +234,53 @@
 
 
 
-  }
+
+
+
+
+    }
 
 
     // 点击编辑;
     change()
-    function change(){
-      $('tbody').on('click','.change',function(){
-          const id=$(this).data('id')
-          location.href='edit.html?id='+id
+    function change() {
+      $('tbody').on('click', '.change', function () {
+        const id = $(this).data('id')
+        location.href = 'edit.html?id=' + id
       })
     }
 
     // 页面一加载就选择登录者的名字;
     userName()
-    function userName(){
-      const Name=location.search;
+    function userName() {
+      const Name = location.search;
       console.log(Name)
-      const newName=Name.split('=')[1];
-      const Uname=decodeURI(newName);
-     $('.userName').text(Uname);
+      const newName = Name.split('=')[1];
+      const Uname = decodeURI(newName);
+      $('.userName').text(Uname);
     }
+
+
+    // 退出登录;
+    loginout()
+    function loginout() {
+      $('.logout').click(function () {
+        $.ajax({
+          url: 'loginout',
+          success: obj => {
+            console.log(obj)
+            if(obj.msg=='success'){
+              alert('退出成功')
+              location.href='login.html'
+            }
+          }
+        })
+      })
+    }
+
+
+
+
   })
 
 </script>

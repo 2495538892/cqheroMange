@@ -124,7 +124,7 @@ app.post('/updateHero', upload.single('heroIcon'), (req, res) => {
 })
 
 
-// 路由六:用户注册;
+// 路由六:用户注册(利用到的模块:密码加密.抽取出来的增删改查)
 
 app.post('/register', (req, res) => {
     // 获取用户传过来的数据;
@@ -201,5 +201,16 @@ app.post('/login', (req, res) => {
 
 
 })
+
+
+// 路由九:登出
+app.get('/loginout',(req,res)=>{
+    req.session = null;
+    res.send({
+        msg:'success',
+        code:200
+    })
+})
+
 
 app.listen('4399') 
